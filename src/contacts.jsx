@@ -62,10 +62,9 @@ const Contacts = () => {
     }
 
     const handleSearchGenderMale = ({ target: { checked } }) => {
-
+        setIsMale(checked);
         if(checked===true) {
             contacts.filter(({gender}) => {
-                setIsMale(checked)
                 return isMale && gender==='male';
             });
         }
