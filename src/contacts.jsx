@@ -37,16 +37,21 @@ const Contacts = () => {
 
     const [contacts, setContacts] = useState(CONTACTS);
     const [search, setSearch] = useState('');
-    // const [isMale, setIsMale] = useState(false);
-    // const [isFemale, setIsFemale] = useState(false);
+    const [isMale, setIsMale] = useState(false);
+    const [isFemale, setIsFemale] = useState(false);
+    const [noGender, setNoGender] = useState(false);
+
+
+    // (isFemale && gender==='female') ||
+    //                     (isMale && gender==='male') ||
 
     useEffect(
         () => {
-            setContacts(CONTACTS.filter(({ firstName, lastName, phone }) => {
+            setContacts(CONTACTS.filter(({ firstName, lastName, phone, gender }) => {
                 const tempSearch = search.toLowerCase();
                 return (firstName && firstName.toLowerCase().includes(tempSearch)) ||
-                    (lastName && lastName.toLowerCase().includes(tempSearch)) ||
-                    (phone && phone.toLowerCase().includes(tempSearch));
+                        (lastName && lastName.toLowerCase().includes(tempSearch)) ||
+                        (phone && phone.toLowerCase().includes(tempSearch));
             }))
         },
         [search],
@@ -56,14 +61,31 @@ const Contacts = () => {
         setSearch(value);
     }
 
+    const handleSearchGenderMale = ({ target: { checked } }) => {
+
+        if(checked===true) {
+            contacts.filter(({gender}) => {
+                setIsMale(checked)
+                return isMale && gender==='male';
+            });
+        }
+    }
+
 
     return (
         <>
             <input
                 onChange={handleSearchChange}
                 placeholder="Enter..."
-
             />
+            <input 
+                type="checkbox"
+                onChange={handleSearchGenderMale}
+            />
+
+            <div>
+                found - {contacts.length} contacts
+            </div>
             <div>
                 {
                     contacts.map((contact, index) => {
