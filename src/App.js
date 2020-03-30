@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import Contacts from './contacts';
-import Contact from './contact';
 
 function App() {
 

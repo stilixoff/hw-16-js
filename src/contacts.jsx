@@ -40,22 +40,6 @@ const Contacts = () => {
     const [isMale, setIsMale] = useState(false);
     const [isFemale, setIsFemale] = useState(false);
     const [noGender, setNoGender] = useState(false);
-
-    // (isFemale && gender==='female') ||
-    //                     (isMale && gender==='male') ||
-
-    // useEffect(
-    //     () => {
-    //         setContacts(CONTACTS.filter(({ firstName, lastName, phone, gender }) => {
-    //             const tempSearch = search.toLowerCase();
-    //             return (firstName && firstName.toLowerCase().includes(tempSearch)) ||
-    //                     (lastName && lastName.toLowerCase().includes(tempSearch)) ||
-    //                     (phone && phone.toLowerCase().includes(tempSearch));
-    //         }))
-    //     },
-    //     [search, isMale],
-    // )
-
     
     useEffect(
         () => {
@@ -67,11 +51,13 @@ const Contacts = () => {
                 (phone && phone.toLowerCase().includes(tempSearch));
 
                 const maleResult = isMale ? gender==='male' : true;
+                const femaleResult = isFemale ? gender==='female' : true;
+                const noGenderResult = noGender ? gender===undefined : true;
 
-                return searchResult && maleResult; 
+                return noGenderResult && femaleResult && searchResult && maleResult; 
             }))
         },
-        [search, isMale],
+        [search, isMale, isFemale, noGender],
     )
 
     const handleSearchChange = ({ target: { value } }) => {
@@ -81,19 +67,40 @@ const Contacts = () => {
     const handleSearchGenderMale = ({ target: { checked } }) => {
         setIsMale(checked);
     }
+    const handleSearchGenderFemale = ({ target: { checked } }) => {
+        setIsFemale(checked);
+    }
+    const handleSearchGenderNoGender = ({ target: { checked } }) => {
+        setNoGender(checked);
+    }
 
 
     return (
         <>
-            <input
-                onChange={handleSearchChange}
-                placeholder="Enter..."
-            />
-            <input 
-                type="checkbox"
-                onChange={handleSearchGenderMale}
-            />
-
+            <div className="input-text">
+                <input
+                    onChange={handleSearchChange}
+                    placeholder="Enter..."
+                />
+            </div>
+            <div className="input-checkbox">
+                <input 
+                    type="checkbox"
+                    onChange={handleSearchGenderMale}
+                />
+            </div>
+            <div className="input-checkbox">
+                <input 
+                    type="checkbox"
+                    onChange={handleSearchGenderFemale}
+                />
+            </div>
+            <div className="input-checkbox">
+                <input 
+                    type="checkbox"
+                    onChange={handleSearchGenderNoGender}
+                />
+            </div>
             <div>
                 found - {contacts.length} contacts
             </div>
