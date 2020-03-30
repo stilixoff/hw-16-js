@@ -41,20 +41,37 @@ const Contacts = () => {
     const [isFemale, setIsFemale] = useState(false);
     const [noGender, setNoGender] = useState(false);
 
-
     // (isFemale && gender==='female') ||
     //                     (isMale && gender==='male') ||
 
+    // useEffect(
+    //     () => {
+    //         setContacts(CONTACTS.filter(({ firstName, lastName, phone, gender }) => {
+    //             const tempSearch = search.toLowerCase();
+    //             return (firstName && firstName.toLowerCase().includes(tempSearch)) ||
+    //                     (lastName && lastName.toLowerCase().includes(tempSearch)) ||
+    //                     (phone && phone.toLowerCase().includes(tempSearch));
+    //         }))
+    //     },
+    //     [search, isMale],
+    // )
+
+    
     useEffect(
         () => {
             setContacts(CONTACTS.filter(({ firstName, lastName, phone, gender }) => {
                 const tempSearch = search.toLowerCase();
-                return (firstName && firstName.toLowerCase().includes(tempSearch)) ||
-                        (lastName && lastName.toLowerCase().includes(tempSearch)) ||
-                        (phone && phone.toLowerCase().includes(tempSearch));
+
+                const searchResult = (firstName && firstName.toLowerCase().includes(tempSearch)) ||
+                (lastName && lastName.toLowerCase().includes(tempSearch)) ||
+                (phone && phone.toLowerCase().includes(tempSearch));
+
+                const maleResult = isMale ? gender==='male' : true;
+
+                return searchResult && maleResult; 
             }))
         },
-        [search],
+        [search, isMale],
     )
 
     const handleSearchChange = ({ target: { value } }) => {
@@ -63,11 +80,6 @@ const Contacts = () => {
 
     const handleSearchGenderMale = ({ target: { checked } }) => {
         setIsMale(checked);
-        if(checked===true) {
-            contacts.filter(({gender}) => {
-                return isMale && gender==='male';
-            });
-        }
     }
 
 
