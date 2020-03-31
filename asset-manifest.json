@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/hw-16-js/static/css/main.41dded47.chunk.css",
+    "main.css": "/hw-16-js/static/css/main.7a862880.chunk.css",
     "main.js": "/hw-16-js/static/js/main.98195929.chunk.js",
     "main.js.map": "/hw-16-js/static/js/main.98195929.chunk.js.map",
     "runtime-main.js": "/hw-16-js/static/js/runtime-main.78396b85.js",
@@ -8,16 +8,16 @@
     "static/js/2.64ce18bc.chunk.js": "/hw-16-js/static/js/2.64ce18bc.chunk.js",
     "static/js/2.64ce18bc.chunk.js.map": "/hw-16-js/static/js/2.64ce18bc.chunk.js.map",
     "index.html": "/hw-16-js/index.html",
-    "precache-manifest.d5a264d0472530aec82a0904565c5b20.js": "/hw-16-js/precache-manifest.d5a264d0472530aec82a0904565c5b20.js",
+    "precache-manifest.937d8eb685c6305c9870363ce2b289c3.js": "/hw-16-js/precache-manifest.937d8eb685c6305c9870363ce2b289c3.js",
     "service-worker.js": "/hw-16-js/service-worker.js",
-    "static/css/main.41dded47.chunk.css.map": "/hw-16-js/static/css/main.41dded47.chunk.css.map",
+    "static/css/main.7a862880.chunk.css.map": "/hw-16-js/static/css/main.7a862880.chunk.css.map",
     "static/js/2.64ce18bc.chunk.js.LICENSE.txt": "/hw-16-js/static/js/2.64ce18bc.chunk.js.LICENSE.txt",
     "static/media/App.css": "/hw-16-js/static/media/ramka.1fa03c0b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.78396b85.js",
     "static/js/2.64ce18bc.chunk.js",
-    "static/css/main.41dded47.chunk.css",
+    "static/css/main.7a862880.chunk.css",
     "static/js/main.98195929.chunk.js"
   ]
 }
